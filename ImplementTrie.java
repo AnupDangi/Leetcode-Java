@@ -9,8 +9,6 @@ class Trie { //208 Problem number
         this.isEnd = false;
     }
 
-  
-
     public void insert(String word) {
         Trie curr = root;
         for (int i = 0; i < word.length(); i++) {
