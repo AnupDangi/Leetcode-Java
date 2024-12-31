@@ -21,6 +21,27 @@ class Solution {
         }
         return dp[i][j];
     }
+    public static int lps_dp(String str,int i,int j){
+        int n=str.length();
+        int dp[][]=new int[n][n];
+        for(int diag=0;diag<n;diag++){
+            for(i=0,j=diag;j<n;i++,j++){  
+            if(i==j){
+                dp[i][j]=1;
+                continue;
+            }
+            int ans=0;
+            if(str.charAt(i)==str.charAt(j)){
+                ans=dp[i+1][j-1]+2; 
+            }
+            else{
+                ans=Math.max(dp[i][j-1], dp[i+1][j]);
+            }
+            dp[i][j]=ans;
+        }
+     }
+        return dp[0][n-1];
+    }
     public int longestPalindromeSubseq(String s) {
         int n=s.length();
         int dp[][]=new int[n][n];
